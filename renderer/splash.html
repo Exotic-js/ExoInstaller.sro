@@ -1,0 +1,44 @@
+<!--
+  © 2026 Exotic. All Rights Reserved.
+  Engineered and Maintained by Exotic.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="exo-splash.css">
+</head>
+
+<body>
+  <div class="splash">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+
+    <div class="logo-text" id="logoText">EX<span>O</span></div>
+    <img id="logoImg"
+      style="display:none; max-width:80%; max-height:120px; margin-bottom:10px; animation: fadeIn 0.8s ease forwards;" />
+    <div class="tagline" id="tagline">Installer & Game Manager</div>
+    <div class="loader"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const logo = params.get('logo');
+    const name = params.get('name');
+
+    if (logo && logo !== 'undefined') {
+      const img = document.getElementById('logoImg');
+      img.src = logo;
+      img.style.display = 'block';
+      document.getElementById('logoText').style.display = 'none';
+    }
+    if (name && name !== 'undefined') {
+      document.getElementById('tagline').textContent = name + ' & Game Manager';
+    }
+  </script>
+</body>
+
+</html>

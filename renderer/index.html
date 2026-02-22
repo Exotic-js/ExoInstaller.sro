@@ -1,0 +1,169 @@
+<!--
+  © 2026 Exotic. All Rights Reserved.
+  Engineered and Maintained by Exotic.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: http: data:;">
+  <title>ExoInstaller</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Exo+2:wght@300;400;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="exo-style.css">
+</head>
+
+<body>
+
+  <!-- BACKGROUND -->
+  <div class="bg-slideshow" id="bgSlideshow"></div>
+  <div class="bg-overlay"></div>
+
+  <!-- TITLEBAR -->
+  <div class="titlebar">
+    <div class="titlebar-left">
+      <span class="title-logo" id="appName">ExoInstaller</span>
+      <span class="title-version" id="installerVer">v1.0.0</span>
+    </div>
+    <div class="titlebar-controls">
+      <button class="tb-btn" id="btnMinimize">─</button>
+      <button class="tb-btn close" id="btnClose">✕</button>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div class="app">
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+      <img class="game-logo" id="gameLogo" src="" alt="Logo">
+      <div class="game-name" id="gameName">Loading...</div>
+      <div class="game-tagline" id="gameTagline">Game Manager</div>
+
+      <!-- STEPS -->
+      <div class="steps" id="stepsNav"></div>
+
+      <!-- NEWS -->
+      <div class="news-section" id="newsSection" style="display:none">
+        <div class="news-title">Latest News</div>
+        <div class="news-list" id="newsList"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+
+      <!-- ── SCREEN: WELCOME ── -->
+      <div class="screen active" id="screen-welcome">
+        <div class="screen-title">Welcome</div>
+        <div class="screen-heading" id="welcomeHeading">Loading...</div>
+        <div class="screen-body" id="welcomeBody">Connecting to update server...</div>
+
+        <div class="error-box" id="errorBox">
+          ⚠ Could not connect to the update server. Check your internet connection and try again.
+        </div>
+
+        <div id="patchNotesContainer" style="display:none">
+          <div class="patch-notes" id="patchNotesList"></div>
+        </div>
+
+        <div class="btn-row" id="welcomeBtns" style="display:none">
+          <button class="btn btn-primary" id="btnContinue">Install Game</button>
+        </div>
+      </div>
+
+      <!-- ── SCREEN: DIRECTORY ── -->
+      <div class="screen" id="screen-directory">
+        <div class="screen-title">Step 01</div>
+        <div class="screen-heading">Installation Path</div>
+        <div class="screen-body">Choose where to install the game. Make sure you have enough free disk space.</div>
+
+        <div class="dir-box">
+          <span class="dir-path" id="installPath">C:\Games\ExoGame</span>
+          <button class="dir-btn" id="btnBrowse">Browse</button>
+        </div>
+        <div class="disk-info">Required: <span id="reqSize">— GB</span> &nbsp;·&nbsp; Available: <span
+            id="availSize">Checking...</span></div>
+
+        <div class="error-box" id="dirError"></div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btnStartInstall">Start Installation</button>
+          <button class="btn btn-secondary" id="btnBack">Back</button>
+        </div>
+      </div>
+
+      <!-- ── SCREEN: DOWNLOAD ── -->
+      <div class="screen" id="screen-download">
+        <div class="screen-title">Step 02</div>
+        <div class="screen-heading">Downloading</div>
+
+        <div class="progress-wrap">
+          <div class="progress-header">
+            <span class="progress-label" id="dlLabel">Downloading client...</span>
+            <span class="progress-pct" id="dlPct">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="dlBar"></div>
+          </div>
+          <div class="progress-stats">
+            <div class="stat">Speed: <span id="dlSpeed">—</span></div>
+            <div class="stat">Size: <span id="dlSize">—</span></div>
+            <div class="stat">ETA: <span id="dlEta">—</span></div>
+          </div>
+        </div>
+
+        <div class="progress-log" id="downloadLog"></div>
+
+        <div class="btn-row" style="margin-top:24px">
+          <button class="btn btn-danger" id="btnCancel">Cancel</button>
+        </div>
+      </div>
+
+      <!-- ── SCREEN: EXTRACT ── -->
+      <div class="screen" id="screen-extract">
+        <div class="screen-title">Step 03</div>
+        <div class="screen-heading">Extracting Files</div>
+
+        <div class="progress-wrap">
+          <div class="progress-header">
+            <span class="progress-label">Extracting archive...</span>
+            <span class="progress-pct" id="exPct">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="exBar"></div>
+          </div>
+        </div>
+
+        <div class="progress-log" id="extractLog"></div>
+      </div>
+
+      <!-- ── SCREEN: DONE ── -->
+      <div class="screen" id="screen-done">
+        <div class="screen-title">Complete</div>
+        <div class="done-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <div class="screen-heading" id="doneHeading">Installation Complete</div>
+        <div class="screen-body" id="doneBody">The game has been successfully installed. You can now launch it.</div>
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btnLaunch">Launch Game</button>
+        </div>
+      </div>
+
+    </div><!-- /right-panel -->
+  </div><!-- /app -->
+
+  <!-- SLIDE INDICATORS -->
+  <div class="slide-indicators" id="slideIndicators"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

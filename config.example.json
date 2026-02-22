@@ -1,0 +1,42 @@
+{
+  "copyright": "© 2026 Exotic. All Rights Reserved.",
+  "installer_name": "ExoInstaller | SRO ",
+  "installer_icon": "renderer/icon.ico",
+  "splash_logo_url": "http://26.26.167.193/exotic//logo.png",
+  "game_name": "ExoGame",
+  "game_tagline": "Enter the World",
+  "game_version": "2.0.0",
+  "installer_version": "1.0.0",
+  "welcome_text": "Welcome to ExoGame. Install the client to begin your adventure.",
+  "exe_name": "Silkroad.exe",
+  "client_url": "http://26.26.167.193/exotic//Atomix%20Online.zip",
+  "file_size_mb": 4200,
+  "checksum_md5": "",
+  "logo_url": "http://26.26.167.193/exotic//logo.png",
+  "backgrounds": [
+    "http://26.26.167.193/exotic//img1.jpg",
+    "http://26.26.167.193/exotic//img2.jpg",
+    "http://26.26.167.193/exotic//img3.jpg"
+  ],
+  "changelog": [
+    {
+      "tag": "new",
+      "text": "Game launched!"
+    },
+    {
+      "tag": "update",
+      "text": "Improved server stability"
+    },
+    {
+      "tag": "fix",
+      "text": "Fixed login crash on startup"
+    }
+  ],
+  "news": [
+    "Server maintenance scheduled for Friday 10PM.",
+    "New event starts this weekend — double XP!",
+    "v1.1 update coming next month with new dungeon."
+  ],
+  "force_update": false,
+  "min_installer_version": "1.0.0"
+}

@@ -1,0 +1,130 @@
+/*
+ * © 2026 Exotic. All Rights Reserved.
+ * Engineered and Maintained by Exotic.
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 500px;
+    height: 300px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+.splash {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border: 1px solid rgba(180, 120, 40, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.splash::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(180, 120, 40, 0.15) 0%, transparent 70%);
+}
+
+.corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: rgba(180, 120, 40, 0.8);
+    border-style: solid;
+}
+
+.corner.tl {
+    top: 12px;
+    left: 12px;
+    border-width: 1px 0 0 1px;
+}
+
+.corner.tr {
+    top: 12px;
+    right: 12px;
+    border-width: 1px 1px 0 0;
+}
+
+.corner.bl {
+    bottom: 12px;
+    left: 12px;
+    border-width: 0 0 1px 1px;
+}
+
+.corner.br {
+    bottom: 12px;
+    right: 12px;
+    border-width: 0 1px 1px 0;
+}
+
+.logo-text {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.logo-text span {
+    color: #c8932a;
+}
+
+.tagline {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: rgba(200, 147, 42, 0.7);
+    text-transform: uppercase;
+    margin-top: 8px;
+    animation: fadeIn 0.8s 0.3s ease forwards;
+    opacity: 0;
+}
+
+.loader {
+    width: 200px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.5s 0.5s ease forwards;
+    opacity: 0;
+}
+
+.loader::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #c8932a, transparent);
+    animation: scan 1.5s 0.6s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scan {
+    to {
+        left: 100%;
+    }
+}
